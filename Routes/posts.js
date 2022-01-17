@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/home', async (req, res) => {
     try{
-        const posts = await Post.find().sort({likes: -1}).limit(5);
+        const posts = await Post.find().limit(5);
         res.json(posts)
     }
     catch(err)
@@ -58,7 +58,7 @@ router.patch('/:postId', async (req, res) => {
         const patchedPost = await Post.updateOne(
             {_id : req.params.postId},
             {$set: 
-                {images: req.body.images}
+                {image: req.body.image}
             })
         res.json(patchedPost)
     }
@@ -100,27 +100,21 @@ router.patch('/dislike/:postId', async (req, res) => {
     }
 })
 
-function getStringArray(props){
-    return props.split('\n')
-}
-
-function getImagesArray(props){
-    return props.split('././././')
-}
-
 
 
 
 router.post('/', async (req, res) => {
     const posts = new Post({
-        place: req.body.place,
-        details: getStringArray(req.body.details),
-        images: getImagesArray(req.body.images),
-        stars: req.body.stars,
-        likes: req.body.likes,
-        dislikes: req.body.dislikes,
-        place_type: req.body.place_type
+        Country: req.body.Country,
+        Sight: req.body.Sight,
+        Description: req.body.description,
+        AvgStars: parseFloat(req.body.AvgStars),
+        address: req.body.address,
+        latitude: parseFloat(req.body.latitude),
+        longitude: parseFloat(req.body.longitude),
+        image: req.body.image
     });
+    console.log(posts)
     try{
         const savedPost = await posts.save();
         res.json(savedPost);

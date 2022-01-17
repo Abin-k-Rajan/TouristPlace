@@ -37,9 +37,11 @@ mongoose.connect(
 
 //  app listening
 
-const { PORT=3000, LOCAL_ADDRESS='0.0.0.0' } = process.env
+const { PORT=12345, LOCAL_ADDRESS='0.0.0.0' } = process.env
 
 app.listen(PORT, LOCAL_ADDRESS, () => {
-    const addrs = app.address();
-    console.log("Server started at", addrs)
+    console.log("Server started at", PORT)
 });
+
+
+module.exports = { app };

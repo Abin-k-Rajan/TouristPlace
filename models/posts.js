@@ -2,37 +2,35 @@ const mongoose = require('mongoose')
 
 
 const placeSchema = new mongoose.Schema({
-    place: {
-        type: String,
-        required: true
+    Country: {
+        type: String
     },
-    details: {
-        type: [String],
-        required: true
+    Sight: {
+        type: String
     },
-    place_type: {
-        type: String,
-        required: true
+    Description: {
+        type: String
     },
-    images: {
-        type: [String],
-        required: true
+    AvgStars: {
+        type: String
     },
-    stars: {
-        type: Number,
-        required: true
+    address: {
+        type: String
+    },
+    latitude:{
+        type: Number
+    },
+    longitude: {
+        type: Number
+    },
+    image: {
+        type: String
     },
     likes: {
-        type: Number,
-        required: true
+        type: Number
     },
     dislikes: {
-        type: Number,
-        required: true
-    },
-    date:{
-        type: Date,
-        default: Date.now
+        type: Number
     }
 })
 
