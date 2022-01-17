@@ -15,17 +15,14 @@ class PostForm extends Component{
         super(props)
 
         this.state = {
-            images: '',
-            place: '',
-            details: [],
-            stars: 5,
-            likes:0,
-            dislikes: 0,
-            place_type: 'Adventure'
-        }
-
-        this.urlState = {
-            images: []
+            Country: '',
+            Sight: '',
+            description: '',
+            AvgStars: 5,
+            address:'',
+            latitude: 0,
+            longitude: 0,
+            image: ''
         }
     }
 
@@ -47,7 +44,6 @@ class PostForm extends Component{
         e.preventDefault()
         if(localStorage.getItem('loggedin') === 'true')
         {
-            console.log(this.state)
             if(this.file === 'ha')
             {
                 alert("Atleast one photo for cover is required!")
@@ -86,16 +82,17 @@ class PostForm extends Component{
             await fileref.put(file).then(() =>{
                 alert("Uploaded, please wait for confirmation")
             }).catch(err => {
-                console.log("Upload failed!")
+                alert("Upload failed!")
             });
             await fileref.getDownloadURL().then(res => {
-                if(this.images)
-                    this.images = this.images + "././././" + res;
-                else{    
-                    this.images = res;
-                }
-                this.setState({["images"]: this.images})
-                alert(this.images)
+                // if(this.images)
+                //     this.images = this.images + "././././" + res;
+                // else{    
+                //     this.images = res;
+                // }
+                // this.setState({["images"]: this.images})
+                this.setState({[e.target.name]: res})
+                alert(res)
             })
         }
         else
@@ -106,32 +103,32 @@ class PostForm extends Component{
     }
 
 
-    setFileUrl
 
     render(){
-        const { place_type, place, details} = this.state
         return(
             <>
                 <div className="post-container">
                     <form onSubmit={this.submitHandler}>
-                        <label>Where did you go??</label>
-                        <input type='text' id='place' name='place'  value={place} onChange={this.changeHandler}/>
-                        <label>Which one of these suits the most??</label>
-                        <select id='place' name='place_type' value={place_type} onChange={this.changeHandler}>
-                            <option>Adventure</option>
-                            <option>Luxury</option>
-                            <option>Mystery</option>
-                            <option>Adventure</option>
-                            <option>Adrenaline</option>
-                        </select>
+                        <label>Sight</label>
+                        <input type='text' id='Sight' name='Sight'  onChange={this.changeHandler}/>
+                        <label>Country</label>
+                        <input type='text' id='Country' name='Country'  onChange={this.changeHandler}/>
 
-                        <label>What's the best about this place??</label>
-                        <textarea type='text' id='details' name='details' value={details} onChange={this.changeHandler}/>
-                        <label>Upload Images [Preferably 5]&nbsp;</label>
-                        <input type="file" id="myfile" name="images" onChange={this.changeImageHandler}/>
-
+                        <label>Description</label>
+                        <textarea type='text' id='description' name='description' onChange={this.changeHandler}/>
+                        <label>Image Link / Upload</label>
+                        <input type="file" id="myfile" name="image" onChange={this.changeImageHandler}/>
                         <button onClick={this.uploadImage} className="upload-button">Upload Image</button>
+                        <input type='text' id='image' name='image'  onChange={this.changeHandler}/>
 
+
+                        <label>Address</label>
+                        <input type='text' id='address' name='address'  onChange={this.changeHandler}/>
+                        <label>Latitude</label>
+                        <input type='text' id='latitude' name='latitude'  onChange={this.changeHandler}/>
+                        <label>Longitude</label>
+                        <input type='text' id='longitude' name='longitude'  onChange={this.changeHandler}/>
+                        
                         <button type='submit'>Submit</button>
                     </form>
                 </div>

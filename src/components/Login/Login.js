@@ -21,7 +21,6 @@ function Login() {
         setLoading(true)
 
         localStorage.clear();
-        console.log(email, password)
         axios.post(api_url + 'user/login', {"email": email, "password": password}).then(
             res => {
                 localStorage.setItem('loggedin', true);

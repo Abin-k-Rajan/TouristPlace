@@ -10,8 +10,6 @@ import '../Footer/Footer.css';
 import Comment from '../Comments/Comments';
 import Detailselement from '../Details/Details';
 import axios from 'axios'
-
-
 import { api_url } from '../../base'
 
 
@@ -56,7 +54,6 @@ function Details(){
         return res.json()
     }).then(res => {
       setPlaces(res)
-      console.log(res)
     })
   }, [])
   
@@ -79,7 +76,6 @@ function Details(){
         setLikes(res.likes)
         setPlace(res.place)
         setDislikes(res.dislikes)
-        console.log(res)
       });
 
       getComment(id).then(res => {
@@ -87,7 +83,6 @@ function Details(){
           return res.json()
       }).then(res => {
         setComments(res)
-        console.log(res)
       });
       window.scrollTo(0, 0);
     }, []);

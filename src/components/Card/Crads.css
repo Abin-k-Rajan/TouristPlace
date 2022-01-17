@@ -34,7 +34,7 @@
   
   .cards__item {
     display: flex;
-    min-width: 40%;
+    min-width: 20%;
     flex: 1;
     flex-flow: row flex;
     flex-wrap: wrap;

@@ -9,7 +9,6 @@ function CarouselContainer({slides})
 
     const prevSlide = () => {
         setCurrent(current === 0 ? length - 1 : current - 1)
-        console.log(slides)
     }
 
     const nextSlide = () => {

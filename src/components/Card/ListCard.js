@@ -15,14 +15,22 @@ function ListCard(props)
   const [places, setPlaces]= useState([])
 
   useEffect(() => {
-    ref.current.continuousStart()
-    getPost().then(res => {
-      if(res.ok)
-        return res.json()
-    }).then(res => {
-      setPlaces(res)
+    if (localStorage.getItem('posts'))
+    {
+      setPlaces(JSON.parse(localStorage.getItem('posts')))
       ref.current.complete()
-    })
+    }
+    else {
+      ref.current.continuousStart()
+      getPost().then(res => {
+        if(res.ok)
+          return res.json()
+      }).then(res => {
+        localStorage.setItem('posts', JSON.stringify(res))
+        setPlaces(res)
+        ref.current.complete()
+      })
+    }
   }, [])
   
     return(
@@ -36,10 +44,10 @@ function ListCard(props)
         <div className='cards__wrapper'>
           <ul className='cards__items'>
                 {places.map((s, index) => (<CardItems
-              src={s.images[0] ? s.images[0] : "images/img-1.jpg"}
-              text={s.place}
-              label={s.place_type}
-              path={`/details/${s._id}`}
+              src={s.image}
+              text={s.Sight}
+              label={s.Country}
+              path={`${s._id}`}
             />))}
           </ul>
         </div>

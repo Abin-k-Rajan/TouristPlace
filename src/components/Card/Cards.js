@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Crads.css';
 import CardItems from './CardItems';
-
 import { api_url } from '../../base'
 
 
@@ -40,18 +39,18 @@ function Cards() {
         <div className='cards__wrapper'>
           <ul className='cards__items'>
           {places.slice(0,2).map((s, index) => (<CardItems
-              src={s.images[0] ? s.images[0] : "images/img-1.jpg"}
-              text={s.place}
-              label={s.place_type}
-              path={`/details/${s._id}`}
+              src={s.image}
+              text={s.Sight}
+              label={s.Country}
+              path={s._id}
             />))}
           </ul>
           <ul className='cards__items'>
           {places.slice(2,5).map((s, index) => (<CardItems
-              src={s.images[0] ? s.images[0] : "images/img-1.jpg"}
-              text={s.place}
-              label={s.place_type}
-              path={`/details/${s._id}`}
+              src={s.image}
+              text={s.Sight}
+              label={s.Country}
+              path={s._id}
             />))}
           </ul>
         </div>

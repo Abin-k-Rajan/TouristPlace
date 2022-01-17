@@ -1,18 +1,17 @@
 import firebase from 'firebase'
 import 'firebase/storage'
-require('dotenv/config')
+require('dotenv').config()
 
 
-//export const api_url = ("https://pacific-crag-45399.herokuapp.com/api/")
-export const api_url = ("http://localhost:3001/api/")
+export const api_url = process.env.REACT_APP_BACKEND_URL
 
 
 export const app = firebase.initializeApp({
-    "projectId": "travelista-60d21",
-    "appId": "1:465154725251:web:d94ffdd6f8e4eb9b5152b6",
-    "storageBucket": "travelista-60d21.appspot.com",
-    "locationId": "us-central",
-    "apiKey": "AIzaSyC2DPAn_Z5Wgj25cZLeP_-1dtpGXW61GKE",
-    "authDomain": "travelista-60d21.firebaseapp.com",
-    "messagingSenderId": "465154725251"
+    "projectId": process.env.REACT_APP_PROJECT_ID,
+    "appId": process.env.REACT_APP_APP_ID,
+    "storageBucket": process.env.REACT_APP_STORAGE_BUCKET,
+    "locationId": process.env.REACT_APP_LOCATION_ID,
+    "apiKey": process.env.REACT_APP_API_KEY,
+    "authDomain": process.env.REACT_APP_AUTH_DOMAIN,
+    "messagingSenderId":process.env.REACT_APP_MESSAGING_SENDER_ID 
   });
