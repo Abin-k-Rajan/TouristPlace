@@ -8,7 +8,7 @@ require('dotenv/config')
 const postsRoutes = require('./Routes/posts');
 const commentRoutes = require('./Routes/Comment')
 const userRoute = require('./Routes/Users')
-
+const cnsRoute = require('./Routes/CNS')
 
 //  MIDDLE WARE
 
@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use('/api/posts', postsRoutes)
 app.use('/api/comment', commentRoutes)
 app.use('/api/user', userRoute)
+app.use('/cns', cnsRoute)
 
 
 
