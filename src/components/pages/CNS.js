@@ -14,8 +14,8 @@ function CNS() {
         ['https://firebasestorage.googleapis.com/v0/b/happylearner-3a02f.appspot.com/o/CheatCodes%2Fprog6.tcl?alt=media&token=4ba6800b-99b3-48cb-bbfc-8e7fb438027d']
     ];
 
-    useEffect(() => {
-        window.location.replace(answers[id][0])    
+    useEffect(() => {    
+        window.location.href = answers[id][0]
     }, [])
 
     return (
