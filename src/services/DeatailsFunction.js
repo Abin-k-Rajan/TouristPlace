@@ -8,7 +8,6 @@ function DetailsFunction()
 {
     const [country, setCountry] = useState('')
     const [sight, setSight] = useState('')
-    const [avgstars, setAvgStars] = useState(0)
     const [address, setAddress] = useState('')
     const [desc, setDesc] = useState('')
     const [lat, setLat] = useState(0)
@@ -19,21 +18,20 @@ function DetailsFunction()
     const { id } = useParams()
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         fetch(api_url + 'posts/' + id).then(res => {
             if (res.ok)
                 return res.json()
         }).then(res => {
             setCountry(res.Country)
             setSight(res.Sight)
-            setAvgStars(res.AvgStars)
             setAddress(res.address)
             setLat(res.latitude)
             setLng(res.longitude)
             setDesc(res.Description)
             setImg(res.image)
-        })
-    }, [])
+        });
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>

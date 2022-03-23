@@ -1,7 +1,6 @@
-import { Component, useEffect, useState } from "react";
+import { Component } from "react";
 import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { api_url } from '../../base'
-import { useParams } from "react-router-dom";
 import './CSS/Details.css'
 
 class NewDetails extends Component {
@@ -10,9 +9,6 @@ class NewDetails extends Component {
     }
 
 
-    constructor(props) {
-        super(props)
-    }
 
 
     render() {
@@ -42,7 +38,7 @@ class NewDetails extends Component {
                     <p>latitude: {this.props.lat}</p>
                     <p>longitude: {this.props.lng}</p>
                     <br></br>
-                    <img className="image" src={this.props.image === '' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfVjYexct1kNpizqh6yoZk8Z5caio6z0MoJw&usqp=CAU' : this.props.image} />
+                    <img className="image" alt={this.props.sight} src={this.props.image === '' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfVjYexct1kNpizqh6yoZk8Z5caio6z0MoJw&usqp=CAU' : this.props.image} />
                     </div>
                 </div>
                 </div>

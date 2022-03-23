@@ -23,7 +23,6 @@ function Cards() {
         return res.json()
     }).then(res => {
       setPlaces(res)
-      console.log(res)
       setLoading(false)
     })
   }, [])
