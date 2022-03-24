@@ -9,6 +9,7 @@ const postsRoutes = require('./Routes/posts');
 const commentRoutes = require('./Routes/Comment')
 const userRoute = require('./Routes/Users')
 const cnsRoute = require('./Routes/CNS')
+const dbmsRoute = require('./Routes/DBMS')
 
 //  MIDDLE WARE
 
@@ -18,6 +19,7 @@ app.use('/api/posts', postsRoutes)
 app.use('/api/comment', commentRoutes)
 app.use('/api/user', userRoute)
 app.use('/cns', cnsRoute)
+app.use('/dbms', dbmsRoute)
 
 
 
